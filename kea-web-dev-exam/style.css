@@ -24,6 +24,7 @@ nav{
 	background: #fff;
 	display:none;
 	position:absolute;
+	z-index:99;
 	width:100vw;
 	height:100vh;
 	top:0px;
