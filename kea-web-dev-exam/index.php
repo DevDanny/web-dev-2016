@@ -18,7 +18,7 @@
 		</div>			
 	</div>
 	<nav>		
-		<ul id="nav">
+		<ul id="nav" class="cl-effect-18">
 			<li href="#">item 1</li>
 			<li href="#">item 2</li>
 			<li href="#">item 3</li>
