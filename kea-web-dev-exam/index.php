@@ -30,7 +30,52 @@
 		</nav>
 	</header>
 	
-	<div id="login-outer">	
+
+	<section class="menu-item" id="menu-item-1">
+		<div class="section-bg">
+			<div class="info-box">
+				<h2>Lorem.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+			</div>
+			<div class="section-img">
+				<img src="img/Sushi.jpg" alt="#">
+			</div>
+		</div>
+	</section>
+
+	<section class="menu-item" id="menu-item-2">
+		<div class="section-bg">
+			<div class="info-box">
+				<h2>Lorem.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+			</div>
+			<div class="section-img">
+				<img src="img/Sushi.jpg" alt="#">
+			</div>
+		</div>
+	</section>
+
+	<section class="menu-item" id="menu-item-3">
+		<div class="section-bg">
+			<div class="info-box">
+				<h2>Lorem.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+			</div>
+			<div class="section-img">
+				<img src="img/Sushi.jpg" alt="#">
+			</div>
+		</div>
+	</section>
+	<div id="login-outer">
 		<div id="login-wrapper">
 			<div id="wdw-login">
 				<input type="text" id="txtUserEmail" placeholder="email">
@@ -45,21 +90,6 @@
 			<button id="btn-logout"><i class="fa fa-user-circle" aria-hidden="true"></i>LOGOUT</button>
 		</form>
 	</div>
-
-	<section id="menu-item-1">
-		<div class="section-bg">
-			<div class="info-box">
-				<h2>Lorem.</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
-				</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
-				</p>
-			</div>
-			<div class="section-img">
-				<img src="img/Sushi.jpg" alt="#">
-			</div>
-		</div>
-	</section>
 
 </body>
 
@@ -90,7 +120,8 @@
 		}).done(function(data){
 			if(data == 1){
 				console.log("logged in");
-				$("#wdw-login").hide();
+				$("#login-outer").hide();
+				$("#login").hide();
 				$("#logout").show();
 			} else{
 				console.log("error: wrong combination");
@@ -107,9 +138,10 @@
 	}).done(function(data){
 		if(data == 1){
 			console.log("already logged in");
-			$("#wdw-login").hide();
+			$("#login").hide();
 			$("#logout").show();
 		} else {
+			//$("#wdw-login").css("display","flex");
 			$("#logout").hide();
 		}
 	})
