@@ -228,6 +228,7 @@ nav {
 }
 
 .menu-item {
+	position: relative;
 	height:100vh;
 	width:80vw;
 }
