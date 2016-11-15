@@ -75,11 +75,14 @@
 			</div>
 		</div>
 	</section>
-
-	<div id="wdw-login">
-		<input type="text" id="txtUserEmail" placeholder="email">
-		<input class="space-top-20" type="text" id="txtUserPassword" placeholder="password">
-		<button id="fire" class="space-top-20">LOGIN</button>
+	<div id="login-outer">
+		<div id="login-wrapper">
+			<div id="wdw-login">
+				<input type="text" id="txtUserEmail" placeholder="email">
+				<input class="space-top-20" type="text" id="txtUserPassword" placeholder="password">
+				<button id="fire" class="space-top-20">LOGIN</button>
+			</div>
+		</div>
 	</div>
 
 	<div id="logout">
@@ -94,7 +97,7 @@
 <script>
 
 	$("#login").click(function(){
-		$("#wdw-login").fadeToggle();
+		$("#login-outer").fadeToggle();
 	})
 
 	$("#menu").click(function(){
@@ -117,7 +120,8 @@
 		}).done(function(data){
 			if(data == 1){
 				console.log("logged in");
-				$("#wdw-login").hide();
+				$("#login-outer").hide();
+				$("#login").hide();
 				$("#logout").show();
 			} else{
 				console.log("error: wrong combination");
@@ -134,7 +138,7 @@
 	}).done(function(data){
 		if(data == 1){
 			console.log("already logged in");
-			$("#wdw-login").hide();
+			$("#login").hide();
 			$("#logout").show();
 		} else {
 			//$("#wdw-login").css("display","flex");
