@@ -31,8 +31,8 @@
 	</header>
 	
 
-	<section class="menu-item" id="menu-item-1">
-		<div class="section-bg">
+	<section id="content-wrapper">
+		<div class="section-bg section-one">
 			<div class="info-box">
 				<h2>Lorem.</h2>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
@@ -40,41 +40,22 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
-			<div class="section-img">
-				<img src="img/Sushi.jpg" alt="#">
+			<img src="img/Sushi.jpg" alt="#">
+		</div>
+
+		<div class="section-bg section-two">
+			<div class="info-box">
+				<h2>Lorem.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
 			</div>
+			<img src="img/Sushi.jpg" alt="#">
+
 		</div>
 	</section>
 
-	<section class="menu-item" id="menu-item-2">
-		<div class="section-bg">
-			<div class="info-box">
-				<h2>Lorem.</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
-				</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
-				</p>
-			</div>
-			<div class="section-img">
-				<img src="img/Sushi.jpg" alt="#">
-			</div>
-		</div>
-	</section>
-
-	<section class="menu-item" id="menu-item-3">
-		<div class="section-bg">
-			<div class="info-box">
-				<h2>Lorem.</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
-				</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
-				</p>
-			</div>
-			<div class="section-img">
-				<img src="img/Sushi.jpg" alt="#">
-			</div>
-		</div>
-	</section>
 	<div id="login-outer">
 		<div id="login-wrapper">
 			<div id="wdw-login">
