@@ -30,8 +30,9 @@
 		</nav>
 	</header>
 	
-
+	<div id="carpet"></div>
 	<section id="content-wrapper">
+
 		<div class="section-bg section-one">
 			<div class="info-box">
 				<h2>Lorem.</h2>
@@ -52,7 +53,28 @@
 				</p>
 			</div>
 			<div id="img"></div>
+		</div>
 
+		<div class="section-bg section-three">
+			<div class="info-box">
+				<h2>Lorem.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+			</div>
+			<div id="img"></div>
+		</div>
+
+		<div class="section-bg section-four">
+			<div class="info-box">
+				<h2>Lorem.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+			</div>
+			<div id="img"></div>
 		</div>
 	</section>
 
