@@ -40,7 +40,7 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
-			<img src="img/Sushi.jpg" alt="#">
+			<div id="img"></div>
 		</div>
 
 		<div class="section-bg section-two">
@@ -51,7 +51,7 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
-			<img src="img/Sushi.jpg" alt="#">
+			<div id="img"></div>
 
 		</div>
 	</section>

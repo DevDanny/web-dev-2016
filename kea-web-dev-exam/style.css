@@ -215,39 +215,75 @@ nav {
 	flex-direction:column;
 }
 .section-bg{
+	display:flex;
 	margin: 25vh 0%;
 	height:50vh;
 	width:75%;
-	position:relative;
 }
+/*
 .section-bg::before{
 	content:'';
 	background:#3f4146;
 	height:100%;
+	width:50%;
 }
+*/
 .section-bg.section-one{
 	background:salmon;
 }
 .section-bg.section-two{
-	background:#2d3a4b;
-}
-.section-bg .info-box, .section-bg img{
-	position:absolute;
+	background:rgba(45, 58, 75, 0.7);
 }
 .section-bg .info-box{
 	z-index:3;
 	background:#fff;
 	padding:50px;
 	width:calc(40% - 100px);
-	height:45vh;
-	top:0;
-	left:0;
-} 
-.section-bg img{
-	top:0;
-	right:0;
+	height:75%;
+}
+
+.section-bg #img{
 	z-index: 2;
 }
+/* SECTION ODD (index 1,3,5) START */
+.section-bg:nth-child(odd) .info-box{
+	box-shadow: 0px 25px 75px rgba(0,0,0,.5);
+}
+.section-bg:nth-child(odd), .section-bg:nth-child(odd) #img{
+	box-shadow: 10px 10px 75px rgba(0,0,0,.5);
+} 
+.section-bg:nth-child(odd) .info-box{
+	flex:50%;
+	transform:translate3d(-50px,0,0);
+}
+.section-bg:nth-child(odd) #img{
+	background: url("img/Sushi.jpg") no-repeat center;
+	background-size: cover;
+	flex:50%;
+	height:90%;
+	transform:translate3d(-50px,-25px,0);
+} 
+/* SECTION ODD (index 1,3,5) END */
+
+/* SECTION EVEN (index 2,4,6) START */
+.section-bg:nth-child(even) .info-box{
+	box-shadow: 0px 25px 75px rgba(0,0,0,.5);
+}
+.section-bg:nth-child(even), .section-bg:nth-child(even) #img{
+	box-shadow: 10px 10px 75px rgba(0,0,0,.5);
+} 
+.section-bg:nth-child(even) .info-box{
+	flex:50%;
+	transform:translate3d(50px,150px,0);
+}
+.section-bg:nth-child(even) #img{
+	background: url("img/Sushi.jpg") no-repeat center;
+	background-size: cover;
+	flex:85%;
+	height:90%;
+	transform:translate3d(-50px,-25px,0);
+} 
+/* SECTION EVEN (index 2,4,6) END */
 #wdw-login{
 	position: absolute;
 	flex-direction: column;
