@@ -31,7 +31,37 @@
 	</header>
 	
 
-	<section id="menu-item-1">
+	<section class="menu-item" id="menu-item-1">
+		<div class="section-bg">
+			<div class="info-box">
+				<h2>Lorem.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+			</div>
+			<div class="section-img">
+				<img src="img/Sushi.jpg" alt="#">
+			</div>
+		</div>
+	</section>
+
+	<section class="menu-item" id="menu-item-2">
+		<div class="section-bg">
+			<div class="info-box">
+				<h2>Lorem.</h2>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
+				</p>
+			</div>
+			<div class="section-img">
+				<img src="img/Sushi.jpg" alt="#">
+			</div>
+		</div>
+	</section>
+
+	<section class="menu-item" id="menu-item-3">
 		<div class="section-bg">
 			<div class="info-box">
 				<h2>Lorem.</h2>
