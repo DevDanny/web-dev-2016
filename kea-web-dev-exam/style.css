@@ -25,7 +25,7 @@ header {
 	position: fixed;
 	width: 100vw;
 	top: 0px;
-	z-index:1;
+	z-index:100;
 }
 
 nav{
@@ -42,6 +42,7 @@ nav{
 #login, #logout{
 	line-height:14px;
 	position:absolute;
+	z-index:99;
 	top:35px;
 	left:35px;
 	cursor:pointer;
@@ -53,7 +54,6 @@ nav{
 	border:none;
 	background:#fff;
 	cursor:pointer;
-
 }
 
 #btn-logout{
@@ -233,10 +233,30 @@ nav{
 #menu-item-1 .section-img{
 	position:relative;
 }
-
+#login-outer{
+	width:100vw;
+	height:100vh;
+	background:grey;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:90;
+	display:none;
+}
+#login-wrapper{
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:0;	
+	z-index: 90;
+	background:#fff;
+}
 #wdw-login{
 	position: absolute;
-	display:none;
 	flex-direction: column;
 	width: 600px;
 	padding: 50px;
@@ -257,9 +277,6 @@ input{
 	border: none;
 	background-color: #26B400;
 	cursor: pointer;
-}
-.flex{
-	display:flex;
 }
 
 .space-top-20{

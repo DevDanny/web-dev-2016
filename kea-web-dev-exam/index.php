@@ -30,6 +30,21 @@
 		</nav>
 	</header>
 	
+	<div id="login-outer">	
+		<div id="login-wrapper">
+			<div id="wdw-login">
+				<input type="text" id="txtUserEmail" placeholder="email">
+				<input class="space-top-20" type="text" id="txtUserPassword" placeholder="password">
+				<button id="fire" class="space-top-20">LOGIN</button>
+			</div>
+		</div>
+	</div>
+
+	<div id="logout">
+		<form action="logout.php">
+			<button id="btn-logout"><i class="fa fa-user-circle" aria-hidden="true"></i>LOGOUT</button>
+		</form>
+	</div>
 
 	<section id="menu-item-1">
 		<div class="section-bg">
@@ -46,25 +61,13 @@
 		</div>
 	</section>
 
-	<div id="wdw-login">
-		<input type="text" id="txtUserEmail" placeholder="email">
-		<input class="space-top-20" type="text" id="txtUserPassword" placeholder="password">
-		<button id="fire" class="space-top-20">LOGIN</button>
-	</div>
-
-	<div id="logout">
-		<form action="logout.php">
-			<button id="btn-logout"><i class="fa fa-user-circle" aria-hidden="true"></i>LOGOUT</button>
-		</form>
-	</div>
-
 </body>
 
 
 <script>
 
 	$("#login").click(function(){
-		$("#wdw-login").fadeToggle();
+		$("#login-outer").fadeToggle();
 	})
 
 	$("#menu").click(function(){
@@ -107,7 +110,6 @@
 			$("#wdw-login").hide();
 			$("#logout").show();
 		} else {
-			//$("#wdw-login").css("display","flex");
 			$("#logout").hide();
 		}
 	})
