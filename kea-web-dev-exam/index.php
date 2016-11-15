@@ -9,23 +9,27 @@
 </head>
 	<!-- test 2 -->
 <body>
-	<button id="login"><i class="fa fa-user-circle" aria-hidden="true"></i>LOGIN</button>
-	<div id="menu">
-		<div id="burger-wrapper">
-			<div class="line"></div>
-			<div class="line"></div>
-			<div class="line"></div>			
-		</div>			
-	</div>
-	<nav>		
-		<ul id="nav">
-			<li href="#">item 1</li>
-			<li href="#">item 2</li>
-			<li href="#">item 3</li>
-			<li href="#">item 4</li>
-			<li href="#">item 5</li>
-		</ul>
-	</nav>
+
+	<header>
+		<button id="login"><i class="fa fa-user-circle" aria-hidden="true"></i>LOGIN</button>
+		<div id="menu">
+			<div id="burger-wrapper">
+				<div class="line"></div>
+				<div class="line"></div>
+				<div class="line"></div>			
+			</div>			
+		</div>
+		<nav>
+			<ul id="nav">
+				<li href="#">item 1</li>
+				<li href="#">item 2</li>
+				<li href="#">item 3</li>
+				<li href="#">item 4</li>
+				<li href="#">item 5</li>
+			</ul>
+		</nav>
+	</header>
+	
 
 	<section id="menu-item-1">
 		<div class="section-bg">
