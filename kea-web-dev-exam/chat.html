@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>chat</title>
+	<style type="text/css">
+		#chat-container{
+			box-sizing: border-box;
+			padding:20px;
+			width: 30vh;
+			height: 30vh;
+			background-color: salmon;
+			position: absolute;
+			bottom: 10px;
+			right: 10px;
+		}
+
+		#chat-box{
+			height: 200px;
+			overflow-y: scroll;
+		}
+
+		.chat-wrapper{
+			position: absolute;
+			bottom: fixed;
+		}
+	</style>
+</head>
+<body>
+
+<div id="chat-container">
+
+	<div id="chat-box">
+		<div id="chat-data">
+			<p id="username">John Doe</p>
+			<p id="message">Lorem ipsum dolor sit amet.</p>
+			<p id="message">Lorem ipsum dolor sit amet.</p>
+			<p id="message">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Illum maxime doloribus tenetur et consectetur, quia commodi, nulla placeat voluptatem quas necessitatibus ad porro cum, id voluptate ipsam hic blanditiis voluptatum expedita. Ullam fuga provident harum nulla saepe libero praesentium similique incidunt, doloribus numquam deleniti, officia, voluptates odit expedita, ipsa maiores.</p>
+			
+		</div>
+
+	</div>
+
+	<div class="chat-wrapper">
+		<input type="textarea" name="">
+		<button class="send-chat">SEND</button>	
+	</div>
+	
+</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</body>
+</html>
