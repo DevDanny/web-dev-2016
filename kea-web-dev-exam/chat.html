@@ -105,12 +105,14 @@
 	<script type="text/javascript">
 
 	$("#send").click(function(){
+		var chatUsername = $("#chat-header").val();
 		var messeage = $("#chat").val();
 
+		var finalUrl = "service-send-chat.php?message="+messeage+"&username="+chatUsername;
+
 		$.ajax({
-		  url  : "service-send-chat.php",
-		  type : "POST",
-		  data : messeage,
+		  url  : finalUrl,
+		  type : "GET",
 		  cache: false
 		}).done(function(data) {
 		  

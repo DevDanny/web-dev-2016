@@ -1,7 +1,7 @@
 <?php 
 	// get variables from an ajax call
-	$user = $POST['username'];
-	$message = $POST['message'];
+	$user = $_GET['username'];
+	$message = $_GET['message'];
 
 	//echo $user." ".$message;
 	// get json chat file

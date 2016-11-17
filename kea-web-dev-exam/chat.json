@@ -34,5 +34,25 @@
     {
         "name": "john",
         "message": "hi"
+    },
+    {
+        "name": null,
+        "message": null
+    },
+    {
+        "name": null,
+        "message": null
+    },
+    {
+        "name": "",
+        "message": "123test"
+    },
+    {
+        "name": "",
+        "message": "321test"
+    },
+    {
+        "name": "john",
+        "message": "hi"
     }
 ]
