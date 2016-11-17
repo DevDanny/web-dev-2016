@@ -76,14 +76,27 @@
 			</div>
 			<div id="img"></div>
 		</div>
+
 	</section>
 
 	<div id="login-outer">
 		<div id="login-wrapper">
-			<div id="wdw-login">
+			<div id="wdw-login" class="wdw">
 				<input type="text" id="txtUserEmail" placeholder="email">
 				<input class="space-top-20" type="text" id="txtUserPassword" placeholder="password">
-				<button id="fire" class="space-top-20">LOGIN</button>
+				<button id="btn-login" class="space-top-20">LOGIN</button>
+				<a href="#" id="link-create-user">Dont have an account? Sign up</a>
+			</div>
+		</div>
+	</div>
+
+	<div id="create-user-outer">
+		<div id="create-user-wrapper">
+			<div id="wdw-create-user" class="wdw">
+				<input type="text" id="txt-create-user-email" placeholder="email">
+				<input class="space-top-20" type="text" id="txt-create-user-password" placeholder="password">
+				<button id="btn-create-user" class="space-top-20">CREATE USER</button>
+				<a href="#" id="link-login">Already have an account? Login.</a>
 			</div>
 		</div>
 	</div>
@@ -101,16 +114,22 @@
 
 	$("#login").click(function(){
 		$("#login-outer").fadeToggle();
-	})
+	});
+	$("#link-create-user").click(function(){
+		$("#create-user-outer").fadeIn();
+	});
+	$("#link-login").click(function(){
+		$("#create-user-outer").fadeOut();
+	});
 
 	$("#menu").click(function(){
 		$("#menu .line:nth-child(2)").toggleClass("burger-open");
 		$("#menu .line:first-child, #menu .line:last-child").toggleClass("burger-open");
 		$("nav").fadeToggle();
-	})
+	});
 
 	// checks if login combination is true or false
-	$("#fire").click(function(){
+	$("#btn-login").click(function(){
 		var userEmail = $("#txtUserEmail").val();
 		var userPassword = $("#txtUserPassword").val();
 
@@ -130,7 +149,23 @@
 				console.log("error: wrong combination");
 			}
 		})
-	})
+	});
+
+	$("#btn-create-user").click(function(){
+		var userEmail = $("#txt-create-user-email").val();
+		var userPassword = $("#txt-create-user-password").val();
+
+		var createUserUrl = "create-user.php?txtCreateUserEmail="+userEmail+"&txtCreateUserPassword="+userPassword;
+
+		$.ajax({
+			url: createUserUrl,
+			type: "GET",
+			cache:false
+		}).done(function(data){
+			$("#create-user-outer").fadeOut();
+		})
+		
+	});
 	
 
 	// check if session exists

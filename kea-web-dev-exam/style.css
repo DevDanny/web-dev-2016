@@ -57,6 +57,28 @@ nav {
 	z-index: 90;
 	background:#fff
 }
+#create-user-outer {
+	width:100vw;
+	height:100vh;
+	background:grey;
+	position:fixed;
+	top:0;
+	left:0;
+	z-index:91;
+	display:none;
+}
+#create-user-wrapper {
+	display:flex;
+	align-items: center;
+	justify-content: center;
+	width:100%;
+	height:100%;
+	position:fixed;
+	top:0;
+	left:0;	
+	z-index: 91;
+	background:#fff
+}
 #login, #logout {
 	line-height:14px;
 	position:fixed;
@@ -314,7 +336,7 @@ nav {
 	transform:translate3d(50px,50px,0);
 } 
 /* SECTION EVEN (index 2,4,6) END */
-#wdw-login{
+.wdw{
 	position: absolute;
 	flex-direction: column;
 	width: 600px;
@@ -327,7 +349,7 @@ input {
 	height: 50px;
 	padding: 10px;
 }
-#wdw-login button {
+.wdw button {
 	width: 100%;
 	height: 50px;
 	color: white;
