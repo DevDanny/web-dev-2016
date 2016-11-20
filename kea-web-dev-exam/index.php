@@ -155,14 +155,17 @@
 		var userEmail = $("#txt-create-user-email").val();
 		var userPassword = $("#txt-create-user-password").val();
 
-		var createUserUrl = "create-user.php?txtCreateUserEmail="+userEmail+"&txtCreateUserPassword="+userPassword;
+		var createUserUrl = "create-user.php";
 
 		$.ajax({
 			url: createUserUrl,
-			type: "GET",
-			cache:false
+			type: "POST",
+			data: {userEmail, userPassword}
 		}).done(function(data){
-			$("#create-user-outer").fadeOut();
+			console.log(data);
+			if(data != "Email already taken"){
+				$("#create-user-outer").fadeOut();
+			}			
 		})
 		
 	});

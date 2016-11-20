@@ -1,7 +1,7 @@
 <?php 
 	// get variables from an ajax call
-	$userEmail = $_GET['txtCreateUserEmail'];
-	$userPassword = $_GET['txtCreateUserPassword'];
+	$userEmail = $_POST['userEmail'];
+	$userPassword = $_POST['userPassword'];
 
 	//echo $user." ".$message;
 	// get json chat file
@@ -11,21 +11,33 @@
 	// decode from string to an object
 	$ajUsers = json_decode($sGetUserFile);
 
+	for ($i = 0; $i < Count($ajUsers); $i++) { 
+		$sUserEmailFromFile = $ajUsers[$i]->userEmail;
 
-	// create a new object and save it in variable, and assign values to the keys
-	$jUser = json_decode('{}');
-	$jUser->id = Count($ajUsers);
-	$jUser->userEmail = $userEmail;
-	$jUser->userPassword = $userPassword;
+		if($userEmail == $sUserEmailFromFile){
+			$exists = true;
+		}
+	}
+	if($exists != true){
+		// create a new object and save it in variable, and assign values to the keys
+		$jUser = json_decode('{}');
+		$jUser->id = Count($ajUsers);
+		$jUser->userEmail = $userEmail;
+		$jUser->userPassword = $userPassword;
 
-	//push the object to array
-	array_push($ajUsers, $jUser);
+		//push the object to array
+		array_push($ajUsers, $jUser);
 
-	//encode the object and make it readable
-	$jEncodeUsers = json_encode($ajUsers, JSON_PRETTY_PRINT);
+		//encode the object and make it readable
+		$jEncodeUsers = json_encode($ajUsers, JSON_PRETTY_PRINT);
 
-	//echo $sEncodeToJson;
+		//echo $sEncodeToJson;
 
-	// append the encoded array to the file
-	file_put_contents("users.json", $jEncodeUsers);
+		// append the encoded array to the file
+		file_put_contents("users.json", $jEncodeUsers);
+		echo "User created";
+	} else{
+		echo "Email already taken";
+	}
+	
 ?>
