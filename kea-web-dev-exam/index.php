@@ -35,9 +35,8 @@
 		
 		<div class="section-bg section-one">
 			<div class="info-box">
-				<h2>Starters.</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
-				</p>
+				<h2>Starters</h2>
+				<h3>Cheese & Wine</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
@@ -47,8 +46,7 @@
 		<div class="section-bg section-two">
 			<div class="info-box">
 				<h2>Main course.</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
-				</p>
+				<h3>title</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
@@ -58,8 +56,7 @@
 		<div class="section-bg section-three">
 			<div class="info-box">
 				<h2>Side orders.</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
-				</p>
+				<h3>title</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
@@ -69,8 +66,7 @@
 		<div class="section-bg section-four">
 			<div class="info-box">
 				<h2>Desserts.</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
-				</p>
+				<h3>title</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
@@ -86,6 +82,7 @@
 				<input class="space-top-20" type="text" id="txtUserPassword" placeholder="password">
 				<button id="btn-login" class="space-top-20">LOGIN</button>
 				<a href="#" id="link-create-user">Dont have an account? Sign up</a>
+				<p id="login-error-message"></p>
 			</div>
 		</div>
 	</div>
@@ -97,6 +94,7 @@
 				<input class="space-top-20" type="text" id="txt-create-user-password" placeholder="password">
 				<button id="btn-create-user" class="space-top-20">CREATE USER</button>
 				<a href="#" id="link-login">Already have an account? Login.</a>
+				<p id="create-user-error-message"></p>
 			</div>
 		</div>
 	</div>
@@ -112,6 +110,11 @@
 
 <script>
 
+	if( localStorage.getItem("userEmail") ){
+		var emailFromLocalStorage = localStorage.getItem("userEmail");
+		$("#txt-create-user-email").val(emailFromLocalStorage);
+	}
+
 	$("#login").click(function(){
 		$("#login-outer").fadeToggle();
 	});
@@ -120,6 +123,9 @@
 	});
 	$("#link-login").click(function(){
 		$("#create-user-outer").fadeOut();
+	});
+	$("#txt-create-user-email").blur(function(){
+		localStorage.setItem("userEmail", $(this).val());
 	});
 
 	$("#menu").click(function(){
@@ -146,7 +152,7 @@
 				$("#login").hide();
 				$("#logout").show();
 			} else{
-				console.log("error: wrong combination");
+				$("#login-error-message").text("Wrong login combination.");
 			}
 		})
 	});
@@ -163,8 +169,10 @@
 			data: {userEmail, userPassword}
 		}).done(function(data){
 			console.log(data);
-			if(data != "Email already taken"){
+			if(data == 1){
 				$("#create-user-outer").fadeOut();
+			} else{
+				$("#create-user-error-message").text("Email address already in use.");
 			}			
 		})
 		

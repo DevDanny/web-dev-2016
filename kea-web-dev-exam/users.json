@@ -26,7 +26,22 @@
     },
     {
         "id": 5,
+<<<<<<< HEAD
         "userEmail": "user1",
         "userPassword": "test"
+=======
+        "userEmail": "wdasaaa",
+        "userPassword": "123"
+    },
+    {
+        "id": 6,
+        "userEmail": "sacsa",
+        "userPassword": "sadsa"
+    },
+    {
+        "id": 7,
+        "userEmail": "donkeykong",
+        "userPassword": ""
+>>>>>>> origin/master
     }
 ]
