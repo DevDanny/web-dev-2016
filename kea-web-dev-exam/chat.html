@@ -269,36 +269,42 @@
 
 //GET USERS FOR THE ADMIN
 	setInterval(function(){
-		var getUserUrl = "http://localhost:8888/web-dev-2016/kea-web-dev-exam/service-get-users.php"
+		var getUserUrl = "service-get-users.php"
 		$.ajax({
 		  url  : getUserUrl,
 		  type : "GET",
 		  cache: false
 		}).done(function(jData) {
-			console.log("ajax start");
+			//console.log("ajax start");
 			var jUsers = JSON.parse(jData);
-			
-		  for (var i = 0; i < jUsers.length; i++) {
-		  	 var newUser;
-		  	$( ".user" ).each(function( index ) {
-		  		
-  				var value = $( this ).text();
-  				//console.log( index + value);
-  				if(value == jUsers[i].userEmail){
-  					 newUser = true;
-  				}
-		    });	//foreach end
-
-		    if(newUser != true){
-		    	console.log("user added")
-		  		$(".chat-body").append("<div class='user'>"+jUsers[i].userEmail+"</div>");
-		    }
-
-		  } //end forloop
+			var chatBodyLength = $(".chat-body .user").length;
+			//console.log(chatBodyLength);
+			if(chatBodyLength == 0){ // if no chats exists in dom, append all from file
+				for (var i = 0; i < jUsers.length; i++) {		  	 		
+				  	$(".chat-body").append("<div class='user'>"+jUsers[i].userEmail+"</div>");
+				 } //end forloop
+			} else{
+				for (var i = 0; i < jUsers.length; i++) {
+					var test = jUsers[i].userEmail;
+					var exists = false;
+					$( ".user" ).each(function() {
+						var currentUser = $( this ).text();
+						if(test == currentUser){
+							exists = true;
+						}				 				
+			    	});	//foreach end
+			    	if(exists == false){
+						console.log("new user");
+						$(".chat-body").append("<div class='user'>"+jUsers[i].userEmail+"</div>");
+					} else{
+						console.log("no changes");
+					}		  	 		
+				}  //end forloop
+			}	  
 		   
 		});
 
-	}, 1000);
+	}, 5000);
 
 	$("#send").click(function(){
 		var chatUsername = $("#chat-header").text();
