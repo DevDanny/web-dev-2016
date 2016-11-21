@@ -260,16 +260,52 @@
 
 	$(".chat-head").click(function(){
 		$(".chat-body").toggle("fast");
-	})
+	});
 
 	$(".msg-head").click(function(){
 		$(".msg-body").toggle("fast");
 		$(".msg-footer").toggle("fast");
-	})
+	});
+
+	$(document).on("click", ".close", function(){
+		$(".msg-box").remove();
+	});
+
+	// click a user in the chat-list
+	$(document).on("click", ".user", function(){
+		var name = $(this).text();
+		console.log( $(this).text() + " is clicked");
+		var newChat = $(
+			'<div class="msg-box">' +
+				'<div class="msg-head">'+ name +
+					'<div class="close">x</div>' +
+				'</div>' +
+				'<div class="msg-body">' +
+					'<div class="msg-in">Incoming message</div>' +
+					'<div class="msg-out">Message send</div>' +
+				'</div>' +
+				'<div class="msg-footer">' +
+					'<textarea class="msg-input" rows="3" type="text" name="message" placeholder="Type message"></textarea>' +
+				'</div>' +
+			'</div>'
+		);
+		$("body").append(newChat);
+   		
+	});
+
+	// sends the text and clear the text area
+	$("textarea").keypress(function(e){
+		if(e.keyCode == 13){
+			var msg = $(this).val();
+			console.log(msg);
+			$(this).val('').focus();    
+	        return false;
+		}
+	});
 
 //GET USERS FOR THE ADMIN
 	setInterval(function(){
-		var getUserUrl = "service-get-users.php"
+		var getUserUrl = "service-get-users.php";
 		$.ajax({
 		  url  : getUserUrl,
 		  type : "GET",
@@ -304,7 +340,7 @@
 		   
 		});
 
-	}, 5000);
+	}, 1000);
 
 	$("#send").click(function(){
 		var chatUsername = $("#chat-header").text();
