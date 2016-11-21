@@ -16,6 +16,7 @@
 
 		if($userEmail == $sUserEmailFromFile){
 			$exists = true;
+			break;
 		}
 	}
 	if($exists != true){

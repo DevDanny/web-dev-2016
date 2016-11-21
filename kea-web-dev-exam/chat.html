@@ -3,7 +3,140 @@
 <head>
 	<title>chat</title>
 	<style type="text/css">
-		#chat-container {
+		@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,700,800');
+		
+		body{
+			background-color: #26A69A;
+			margin:  0px;
+			padding: 0px;
+			font-family: "Open Sans", sans-serif;
+		
+		}
+
+		.chat-box, .msg-box{
+			position: fixed;
+			bottom: 0px;
+			right: 20px;
+			background-color: white;
+			width: 250px;
+			
+			border-radius: 5px 5px 0 0;
+			
+		}
+
+		.chat-head, .msg-head{
+			cursor: pointer;
+			background-color: #3d414c;
+			color: white;
+			padding: 15px;
+			border-radius: 5px 5px 0 0;
+		}
+		
+		.chat-body{
+			height: 400px;
+		}
+
+		.user{
+			cursor: pointer;
+			padding:20px 25px;
+			position: relative;
+		}
+
+		.user:hover{
+			background-color: #f8f8f8;
+		}
+
+		.user:before{
+			content:"";
+			position: absolute;
+			left:7px;
+			top: 27px;
+			width: 10px;
+			height: 10px;
+			border-radius: 50px;
+			background-color: green;
+		}
+	
+		.msg-box{
+			bottom: -5px;
+			background-color: white;
+			width: 250px;
+			right: 290px;
+		}
+
+		.close{
+			display: inline-block;
+			position: absolute;
+			right: 20px;
+		}
+
+		.msg-body{
+			height: 250px;
+			font-size: 12px;
+		}
+
+		.msg-input{
+			width: 100%;
+			padding: 5px;
+			font-family: "Open Sans", sans-serif;
+			font-size: 16px;
+    		-webkit-box-sizing: border-box;
+     		-moz-box-sizing: border-box;
+            box-sizing: border-box;
+            border:none;
+            border-top: 1px solid #f8f8f8;
+		}
+
+		.msg-in{
+			margin-top: 10px;
+			margin-right:20px;
+			margin-left: 20px;
+			padding: 15px;
+			background-color: #bdc3c7;
+			position: relative;
+			border-radius: 2px 5px 5px 2px;
+		}
+
+		.msg-in:before{
+			position: absolute;
+			left:-30px;
+			top:9px;
+			content: "";
+			width: 0px;
+			height: 0px;
+			border: 15px solid;
+			border-color: transparent #bdc3c7 transparent transparent;
+		}
+
+		.msg-out{
+			margin-top: 10px;
+			margin-right:20px;
+			margin-left: 20px;
+			padding: 15px;
+			background-color: #29B6F6;
+			position: relative;
+			border-radius: 5px 2px 2px 5px;
+		}
+
+		.msg-out:before{
+			position: absolute;
+			right:-30px;
+			top:9px;
+			content: "";
+			width: 0px;
+			height: 0px;
+			border: 15px solid;
+			border-color: transparent transparent transparent #29B6F6;
+		}
+
+		.msg-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  			font
+		}
+
+
+
+
+		/*#chat-container {
 			display: flex;
 			flex-direction: column;
 			width: 40vh;
@@ -56,15 +189,37 @@
      p.me {
      	margin: 10px auto 0 0;
         background-color: #E0E0E0;
-      }
+      }*/
 
 
-		
 	</style>
+
 </head>
 <body>
 
-<div id="chat-container">
+
+	<div class="chat-box">
+		<div class="chat-head">Chatbox</div>
+		<div class="chat-body">
+			<div class="user">Rasmus Seindal</div>
+		</div>
+	</div>
+
+	<div class="msg-box">
+		<div class="msg-head">Danny Olsen
+			<div class="close">x</div>
+		</div>
+		<div class="msg-body">
+			<div class="msg-in">Incoming message</div>
+			<div class="msg-out">Message send</div>
+		</div>
+		<div class="msg-footer">
+			<textarea class="msg-input" rows="3" type="text" name="message" placeholder="Type message"></textarea>
+		</div>
+		 
+	</div>
+
+<!-- <div id="chat-container">
 	<p id="chat-header">name</p>
 	<div class="chat-wrapper">
 		<blockquote class="chat">
@@ -95,20 +250,44 @@
 		<input  id="chat" type="text" name="input">
 	  	<button id="send">Send</button>
 	</div>
-	</div>
+	</div> -->
 
-	
-	
-</div>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 
 	<script type="text/javascript">
 
+	$(".chat-head").click(function(){
+		$(".chat-body").toggle("fast");
+	})
+
+	$(".msg-head").click(function(){
+		$(".msg-body").toggle("fast");
+		$(".msg-footer").toggle("fast");
+	})
+
+//GET USERS FOR THE ADMIN
+	setInterval(function(){
+		var getUserUrl = "http://localhost:8888/web-dev-2016/kea-web-dev-exam/service-get-users.php"
+		
+		$.ajax({
+		  url  : getUserUrl,
+		  type : "GET",
+		  cache: false
+		}).done(function(jData) {
+			console.log(jData)
+		  for (var i = 0; i < jData.length; i++) {
+		  	
+		  }
+		});
+
+	}, 5000)
+
 	$("#send").click(function(){
-		var chatUsername = $("#chat-header").val();
+		var chatUsername = $("#chat-header").text();
 		var messeage = $("#chat").val();
 
 		var finalUrl = "service-send-chat.php?message="+messeage+"&username="+chatUsername;
+		console.log(chatUsername+" writes "+messeage);
 
 		$.ajax({
 		  url  : finalUrl,
