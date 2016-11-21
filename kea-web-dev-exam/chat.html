@@ -262,7 +262,7 @@
 		$(".chat-body").toggle("fast");
 	});
 
-	$(".msg-head").click(function(){
+	$(document).on("click", ".msg-head", function(){
 		$(".msg-body").toggle("fast");
 		$(".msg-footer").toggle("fast");
 	});
