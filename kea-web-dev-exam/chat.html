@@ -294,7 +294,7 @@
 	});
 
 	// sends the text and clear the text area
-	$("textarea").keypress(function(e){
+	$(document).on("keypress", ".msg-input", function(e){
 		if(e.keyCode == 13){
 			var msg = $(this).val();
 			console.log(msg);
