@@ -36,9 +36,9 @@
 
 		// append the encoded array to the file
 		file_put_contents("users.json", $jEncodeUsers);
-		echo "User created";
+		echo true;
 	} else{
-		echo "Email already taken";
+		echo false;
 	}
 	
 ?>
