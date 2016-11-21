@@ -55,7 +55,7 @@
 
 		<div class="section-bg section-three">
 			<div class="info-box">
-				<h2>Side orders.</h2>
+				<h2>Side orders</h2>
 				<h3>title</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
@@ -65,7 +65,7 @@
 
 		<div class="section-bg section-four">
 			<div class="info-box">
-				<h2>Desserts.</h2>
+				<h2>Desserts</h2>
 				<h3>title</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
