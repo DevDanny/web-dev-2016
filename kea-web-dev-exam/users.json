@@ -39,5 +39,35 @@
         "id": 7,
         "userEmail": "donkeykong",
         "userPassword": ""
+    },
+    {
+        "id": 8,
+        "userEmail": "bent",
+        "userPassword": ""
+    },
+    {
+        "id": 9,
+        "userEmail": "mig",
+        "userPassword": ""
+    },
+    {
+        "id": 10,
+        "userEmail": "åoagmoagag",
+        "userPassword": ""
+    },
+    {
+        "id": 11,
+        "userEmail": "Peter",
+        "userPassword": ""
+    },
+    {
+        "id": 12,
+        "userEmail": "Peter",
+        "userPassword": ""
+    },
+    {
+        "id": 13,
+        "userEmail": "søren",
+        "userPassword": ""
     }
 ]

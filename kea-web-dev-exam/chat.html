@@ -34,6 +34,7 @@
 		
 		.chat-body{
 			height: 400px;
+			overflow-y: scroll;
 		}
 
 		.user{
@@ -73,6 +74,7 @@
 		.msg-body{
 			height: 250px;
 			font-size: 12px;
+
 		}
 
 		.msg-input{
@@ -201,7 +203,7 @@
 	<div class="chat-box">
 		<div class="chat-head">Chatbox</div>
 		<div class="chat-body">
-			<div class="user">Rasmus Seindal</div>
+			<!-- <div class="user">Rasmus Seindal</div> -->
 		</div>
 	</div>
 
@@ -268,19 +270,35 @@
 //GET USERS FOR THE ADMIN
 	setInterval(function(){
 		var getUserUrl = "http://localhost:8888/web-dev-2016/kea-web-dev-exam/service-get-users.php"
-		
 		$.ajax({
 		  url  : getUserUrl,
 		  type : "GET",
 		  cache: false
 		}).done(function(jData) {
-			console.log(jData)
-		  for (var i = 0; i < jData.length; i++) {
-		  	
-		  }
+			console.log("ajax start");
+			var jUsers = JSON.parse(jData);
+			
+		  for (var i = 0; i < jUsers.length; i++) {
+		  	 var newUser;
+		  	$( ".user" ).each(function( index ) {
+		  		
+  				var value = $( this ).text();
+  				//console.log( index + value);
+  				if(value == jUsers[i].userEmail){
+  					 newUser = true;
+  				}
+		    });	//foreach end
+
+		    if(newUser != true){
+		    	console.log("user added")
+		  		$(".chat-body").append("<div class='user'>"+jUsers[i].userEmail+"</div>");
+		    }
+
+		  } //end forloop
+		   
 		});
 
-	}, 5000)
+	}, 1000);
 
 	$("#send").click(function(){
 		var chatUsername = $("#chat-header").text();
