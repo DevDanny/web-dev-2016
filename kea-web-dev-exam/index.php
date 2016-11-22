@@ -129,6 +129,7 @@
 				$(this).removeClass("animate-section");
 			}
 		});
+		console.log("---------------------------------------");
 	});
 
 	$("#nav li").click(function(){
