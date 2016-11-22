@@ -25,7 +25,6 @@
 				<li href="#">item 2</li>
 				<li href="#">item 3</li>
 				<li href="#">item 4</li>
-				<li href="#">item 5</li>
 			</ul>
 		</nav>
 	</header>
@@ -40,17 +39,17 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
-			<div id="img"></div>
+			<div class="img"></div>
 		</div>
 
 		<div class="section-bg section-two">
 			<div class="info-box">
-				<h2>Main course.</h2>
+				<h2>Main course</h2>
 				<h3>title</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
-			<div id="img"></div>
+			<div class="img"></div>
 		</div>
 
 		<div class="section-bg section-three">
@@ -60,7 +59,7 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
-			<div id="img"></div>
+			<div class="img"></div>
 		</div>
 
 		<div class="section-bg section-four">
@@ -70,7 +69,7 @@
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
-			<div id="img"></div>
+			<div class="img"></div>
 		</div>
 
 	</section>
@@ -109,6 +108,44 @@
 
 
 <script>
+
+	// start animation of first section on doc ready
+	$(".section-bg:first-child").addClass("animate-section");
+
+	$(window).scroll(function(){
+		//calculate section top offset from window top offset
+		var offsetFromWindowTop = $(window).scrollTop();
+
+		var section = $(".section-bg");
+		$.each( section, function( i ) {
+		  	//console.log(this);
+		  	var sectionOffsetFromTop = $(this).offset().top;
+			var offsetDistance = offsetFromWindowTop - sectionOffsetFromTop;
+			console.log("section " + i + ": " + offsetDistance + "px from top");
+			if(offsetDistance > "-500"){
+				$(this).addClass("animate-section");
+				console.log("section "+ ( i + 1 ) + " is now at the top or above");
+			} else {
+				$(this).removeClass("animate-section");
+			}
+		});
+	});
+
+	$("#nav li").click(function(){
+		// get link index for later use in equation
+		var linkIndex = $(this).index();
+		// define section offset from top
+     	var sectionOffsetFromTop = $(window).height() * linkIndex;		
+      	console.log(sectionOffsetFromTop);
+      	// animate close burger
+      	$("#menu .line:nth-child(2)").toggleClass("burger-open");
+		$("#menu .line:first-child, #menu .line:last-child").toggleClass("burger-open");
+      	$("nav").fadeOut();
+      	// animate to section
+        $('body').animate({
+        	scrollTop: sectionOffsetFromTop+'px'
+      	}, 1000 );
+	})
 
 	if( localStorage.getItem("userEmail") ){
 		var emailFromLocalStorage = localStorage.getItem("userEmail");
