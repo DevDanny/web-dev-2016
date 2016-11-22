@@ -13,18 +13,33 @@
 		
 		}
 
-		.chat-box, .msg-box{
+		.chat-wrapper{
+			width: 100%;
 			position: fixed;
-			bottom: 0px;
-			right: 20px;
+			bottom: 0;
+		}
+
+		.chat-inner-wrapper{
+			display: flex;
+			justify-content:flex-end;
+		}
+
+
+
+		.chat-box, .msg-box{
+			display: flex;
+			flex-direction: column;
 			background-color: white;
 			width: 250px;
-			
 			border-radius: 5px 5px 0 0;
-			
+		}
+
+		.chat-box{
+			order: 1;
 		}
 
 		.chat-head, .msg-head{
+			display: flex;
 			cursor: pointer;
 			background-color: #3d414c;
 			color: white;
@@ -59,7 +74,6 @@
 		}
 	
 		.msg-box{
-			bottom: -5px;
 			background-color: white;
 			width: 250px;
 			right: 290px;
@@ -199,26 +213,28 @@
 </head>
 <body>
 
+	<div class="chat-wrapper">
+		<div class="chat-inner-wrapper">
+			<div class="chat-box">
+				<div class="chat-head">Chatbox</div>
+				<div class="chat-body">
+					<!-- blue print <div class="user">Rasmus Seindal</div> -->
+				</div>
+			</div>
 
-	<div class="chat-box">
-		<div class="chat-head">Chatbox</div>
-		<div class="chat-body">
-			<!-- <div class="user">Rasmus Seindal</div> -->
+			<div class="msg-box">
+				<div class="msg-head">Danny Olsen
+					<div class="close">x</div>
+				</div>
+				<div class="msg-body">
+					<div class="msg-in">Incoming message</div>
+					<div class="msg-out">Message send</div>
+				</div>
+				<div class="msg-footer">
+					<textarea class="msg-input" rows="3" type="text" name="message" placeholder="Type message"></textarea>
+				</div>
+			</div>
 		</div>
-	</div>
-
-	<div class="msg-box">
-		<div class="msg-head">Danny Olsen
-			<div class="close">x</div>
-		</div>
-		<div class="msg-body">
-			<div class="msg-in">Incoming message</div>
-			<div class="msg-out">Message send</div>
-		</div>
-		<div class="msg-footer">
-			<textarea class="msg-input" rows="3" type="text" name="message" placeholder="Type message"></textarea>
-		</div>
-		 
 	</div>
 
 <!-- <div id="chat-container">
@@ -268,7 +284,7 @@
 	});
 
 	$(document).on("click", ".close", function(){
-		$(".msg-box").remove();
+		$(this).parents().eq(1).remove();
 	});
 
 	// click a user in the chat-list
@@ -289,7 +305,7 @@
 				'</div>' +
 			'</div>'
 		);
-		$("body").append(newChat);
+		$(".chat-inner-wrapper").append(newChat);
    		
 	});
 
