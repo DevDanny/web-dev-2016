@@ -45,7 +45,7 @@
 		<div class="section-bg section-two">
 			<div class="info-box">
 				<h2>Main course</h2>
-				<h3>title</h3>
+				<h3>Grilled Beef</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
@@ -65,7 +65,7 @@
 		<div class="section-bg section-four">
 			<div class="info-box">
 				<h2>Desserts</h2>
-				<h3>title</h3>
+				<h3>Belgian waffle</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
@@ -124,7 +124,7 @@
 			console.log("section " + i + ": " + offsetDistance + "px from top");
 			if(offsetDistance > "-500"){
 				$(this).addClass("animate-section");
-				console.log("section "+ ( i + 1 ) + " is now at the top or above");
+				console.log("section "+ ( i ) + " is now at the top or above");
 			} else {
 				$(this).removeClass("animate-section");
 			}
