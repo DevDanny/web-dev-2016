@@ -175,22 +175,35 @@
 	$("#btn-login").click(function(){
 		var userEmail = $("#txtUserEmail").val();
 		var userPassword = $("#txtUserPassword").val();
-
 		var verificationUrl = "verify-login.php?txtUserEmail="+userEmail+"&txtUserPassword="+userPassword;
 
 		$.ajax({
 			url: verificationUrl,
 			type: "GET",
 			cache:false
-		}).done(function(data){
-			if(data == 1){
-				console.log("logged in");
-				$("#login-outer").hide();
-				$("#login").hide();
-				$("#logout").show();
-			} else{
+		}).done(function(jData){
+			//console.log(jData);
+			try{
+				var jLogin = JSON.parse(jData);
+				var userStatus = jLogin[0].status;
+				var userVerified = jLogin[0].verified;
+				if(userVerified == true){
+					console.log("logged in");
+					$("#login-outer").hide();
+					$("#login").hide();
+					$("#logout").show();
+				}
+				if(userStatus == 1){
+					// append admin chat stuff to #admin-page div
+					// and .show("#admin-page")
+				} else{
+					// append user chat stuff to #user-page div
+					// and .show("#user-page")
+				}
+			} catch(error){
 				$("#login-error-message").text("Wrong login combination.");
 			}
+			
 		})
 	});
 

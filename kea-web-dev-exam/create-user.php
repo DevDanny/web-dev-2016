@@ -25,6 +25,7 @@
 		$jUser->id = Count($ajUsers);
 		$jUser->userEmail = $userEmail;
 		$jUser->userPassword = $userPassword;
+		$jUser->status = 0;
 
 		//push the object to array
 		array_push($ajUsers, $jUser);
