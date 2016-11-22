@@ -18,5 +18,16 @@
         "id": 3,
         "userEmail": "tulle",
         "userPassword": "123"
+    },
+    {
+        "id": 4,
+        "userEmail": "boelsmand",
+        "userPassword": "123"
+    },
+    {
+        "id": 5,
+        "userEmail": "admin",
+        "userPassword": "admin",
+        "status":1
     }
 ]

@@ -5,7 +5,6 @@
 	<title>LOGIN</title>
 	<link rel="stylesheet" href="style.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">	
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 </head>
 	<!-- test 2 -->
 <body>
@@ -21,10 +20,10 @@
 		</div>
 		<nav>
 			<ul id="nav">
-				<li href="#">item 1</li>
-				<li href="#">item 2</li>
-				<li href="#">item 3</li>
-				<li href="#">item 4</li>
+				<li href="#">Starters</li>
+				<li href="#">Main course</li>
+				<li href="#">Sides</li>
+				<li href="#">Dessert</li>
 			</ul>
 		</nav>
 	</header>
@@ -54,8 +53,8 @@
 
 		<div class="section-bg section-three">
 			<div class="info-box">
-				<h2>Side orders</h2>
-				<h3>title</h3>
+				<h2>Sides</h2>
+				<h3>Homemade pasta</h3>
 				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta cum deserunt voluptatibus doloremque expedita dicta sint earum libero ipsam porro.
 				</p>
 			</div>
@@ -106,7 +105,7 @@
 
 </body>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script>
 
 	// start animation of first section on doc ready
@@ -121,15 +120,15 @@
 		  	//console.log(this);
 		  	var sectionOffsetFromTop = $(this).offset().top;
 			var offsetDistance = offsetFromWindowTop - sectionOffsetFromTop;
-			console.log("section " + i + ": " + offsetDistance + "px from top");
+			//console.log("section " + i + ": " + offsetDistance + "px from top");
 			if(offsetDistance > "-500"){
 				$(this).addClass("animate-section");
-				console.log("section "+ ( i ) + " is now at the top or above");
+				//console.log("section "+ ( i ) + " is now at the top or above");
 			} else {
 				$(this).removeClass("animate-section");
 			}
 		});
-		console.log("---------------------------------------");
+		//console.log("---------------------------------------");
 	});
 
 	$("#nav li").click(function(){
