@@ -179,6 +179,24 @@
 
 	<script type="text/javascript">
 
+	function getChatMessages(username){
+		var username = username;
+		var getChatMessageUrl = "service-get-chat-messages.php?username=" + username;
+
+		$.ajax({
+			url: getChatMessageUrl,
+			type: "GET",
+			cache:false
+		}).done(function(data){
+			console.log(JSON.parse(data));
+			$(".chat-inner-wrapper").append(
+				"nu skal vi lave blueprint"
+			);
+		})
+	}
+
+
+
 	$(".chat-head").click(function(){
 		$(".chat-body").toggle("fast");
 	});
@@ -193,8 +211,9 @@
 
 	// click a user in the chat-list
 	$(document).on("click", ".user", function(){
+		var msgHead = $(".msg-box .msg-head:first-child");
 		var name = $(this).text();
-		console.log( $(this).text() + " is clicked");
+		var exists;
 		var newChat = $(
 			'<div class="msg-box">' +
 				'<div class="msg-head">'+ name +
@@ -208,9 +227,33 @@
 					'<textarea class="msg-input" rows="3" type="text" name="message" placeholder="Type message"></textarea>' +
 				'</div>' +
 			'</div>'
-		);
-		$(".chat-inner-wrapper").append(newChat);
-   		
+		);		
+
+		var msgLength = $(".chat-inner-wrapper").children().length;
+
+		if(msgLength == 1){
+			// if no chats open append right away
+			console.log(true);
+			$(".chat-inner-wrapper").append(newChat);
+		} else{
+			//else check dom elements for duplicates before appending
+			$.each( msgHead, function( key, value ) {
+				var chatHeadname = $(this).text();
+				chatHeadname = chatHeadname.split("x");
+				chatHeadname = chatHeadname[0]
+			  	//console.log(chatHeadname);
+			  	if(name == chatHeadname){
+			  		exists = true;			
+			  	}
+			}); 
+			// append if no match is found
+			if(exists != true){
+			  	$(".chat-inner-wrapper").append(newChat);
+			  	getChatMessages(name);
+			} else{
+				//console.log("chat window already open");
+			}
+		}		
 	});
 
 	// sends the text and clear the text area
