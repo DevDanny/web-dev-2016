@@ -159,6 +159,7 @@
 
 	$("#login").click(function(){
 		$("#login-outer").fadeToggle();
+		$("#create-user-outer").fadeOut();		
 	});
 	$("#link-create-user").click(function(){
 		$("#create-user-outer").fadeIn();
