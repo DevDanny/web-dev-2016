@@ -180,61 +180,29 @@ nav {
 }
 
 #nav li {
-	position: relative;
+	overflow:hidden;
+	position: relative;	
 	list-style: none;
-	padding:10px 0px;
+	padding:10px 20px;
 	color: #000;
 	cursor:pointer;
 	font-weight: bold;
 	font-size: 24px;
-	transition-duration: .25s; 
-	margin-bottom: 10px;
-}
-
-#nav li::before {
-	content: '';
-	position: absolute;
-	top:0;
-	left:0;
-	background: #000;
-	width: 100%;
-	padding:1px;
-	height:0px;
+	line-height:24px;
 	transition-duration: .25s;
-	opacity: 0;
 }
-
-#nav li:hover::before {
-/*	border-top: solid black .5px;
-	border-bottom: solid black .5px;*/
-	transform: rotate(35deg);
+#nav li::after{
+	content:"";
+	right:-100%;
 	top:calc(50% - 1px);
-	width: 100%;
-	opacity: .5;
-	/*	-webkit-transition:  border 5s ease;
- 	-moz-transition:   5s ease;
-	-o-transition:  -top solid black 5s ease;
-	-ms-transition: border-top solid black 5s ease;*/
-
+	position:absolute;
+	height:2px;
+	width:100%;
+	background:#000;
+	transition-duration:.25s;	
 }
-
-#nav li::after {
-	opacity: 0;
-	content: '';
-	position: absolute;
-	bottom:0;
-	left:0;
-	padding:1px;
-	height:0px;
-	background: #000;
-	width: 100%;
-	transition-duration: .25s;
-}
-#nav li:hover::after {
-	transform: rotate(-35deg);
-	bottom: calc(50% - 1px);
-	width: 100%;
-	opacity: .5;
+#nav li:hover::after{
+	transform:translateX(calc(-200% + 10px));	
 }
 #carpet{
 	height:400vh;
