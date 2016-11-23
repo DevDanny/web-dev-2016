@@ -11,8 +11,10 @@
 		$theCorrectUserPassword = $i->userPassword;
 		$status = $i ->status;
 
-		if( $_GET['txtUserEmail'] == $theCorrectUserEmail && $_GET['txtUserPassword'] == $theCorrectUserPassword ){		
-			$_SESSION['userEmail'] = $theCorrectUserEmail;
+		if( $_GET['txtUserEmail'] == $theCorrectUserEmail && $_GET['txtUserPassword'] == $theCorrectUserPassword ){	
+			$loginStatus = 1;	
+			$sUserInfo = '[{"name":"'.$theCorrectUserEmail.'","loginStatus":'.$loginStatus.',"status":'.$status.'}]';
+			$_SESSION['userInfo'] = $sUserInfo;
 
 			$jVerify = JSON_decode('{}');
 			$jVerify->verified = true;
@@ -24,6 +26,6 @@
 		} else{
 				
 		}
-	}	
+	}
 
 ?>

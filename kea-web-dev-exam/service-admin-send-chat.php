@@ -30,7 +30,7 @@
 		echo "message sent";
 	} else{
 		echo "file created";
-		$sMessage = '[{"name":admin","message":"'.$message.'"}]';
+		$sMessage = '[{"name":"'.$user.'","message":"'.$message.'"}]';
 		file_put_contents("$user.json", $sMessage);
 	}
 ?>

@@ -103,6 +103,11 @@
 		</form>
 	</div>
 
+	<div class="chat-wrapper">
+		<div class="chat-inner-wrapper">
+		</div>
+	</div>
+
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
@@ -171,9 +176,30 @@
 		$("nav").fadeToggle();
 	});
 
+
+	var adminChat = $(
+		'<div class="chat-box">' +
+			'<div class="chat-head">Chat list</div>' +
+			'<div class="chat-body"></div>' +
+		'</div>'
+	);
+	var userChat = $(
+			'<div class="msg-box">' +
+				'<div class="msg-head">Admin'+
+					'<div class="close">x</div>' +
+				'</div>' +
+				'<div class="msg-body">' +
+					// messages here
+				'</div>' +
+				'<div class="msg-footer">' +
+					'<textarea class="msg-input" rows="3" type="text" name="message" placeholder="Type message"></textarea>' +
+				'</div>' +
+			'</div>'
+		);	
 	// checks if login combination is true or false
 	$("#btn-login").click(function(){
 		var userEmail = $("#txtUserEmail").val();
+		localStorage.setItem("userName", userEmail);
 		var userPassword = $("#txtUserPassword").val();
 		var verificationUrl = "verify-login.php?txtUserEmail="+userEmail+"&txtUserPassword="+userPassword;
 
@@ -194,11 +220,11 @@
 					$("#logout").show();
 				}
 				if(userStatus == 1){
-					// append admin chat stuff to #admin-page div
-					// and .show("#admin-page")
+					$(".chat-wrapper").show();
+					$(".chat-wrapper .chat-inner-wrapper").append(adminChat);			
 				} else{
-					// append user chat stuff to #user-page div
-					// and .show("#user-page")
+					$(".chat-wrapper").show();
+					$(".chat-wrapper .chat-inner-wrapper").append(userChat);
 				}
 			} catch(error){
 				$("#login-error-message").text("Wrong login combination.");
@@ -234,16 +260,226 @@
 		url: "check-login-session.php",
 		type: "GET",
 		cache:false		
-	}).done(function(data){
-		if(data == 1){
+	}).done(function(sData){
+		var jData = JSON.parse(sData);
+		console.log(jData);
+		if(jData[0].loginStatus == 1){
+
 			console.log("already logged in");
 			$("#login").hide();
 			$("#logout").show();
+			if(jData[0].status == 1){
+				$(".chat-wrapper").show();
+				$(".chat-wrapper .chat-inner-wrapper").append(adminChat);	
+			} else{
+				$(".chat-wrapper").show();
+				$(".chat-wrapper .chat-inner-wrapper").append(userChat);	
+			}
 		} else {
 			//$("#wdw-login").css("display","flex");
 			$("#logout").hide();
 		}
 	})
+
+	// *************************************************************************
+	// ******************************* CHAT ************************************
+	// *************************************************************************
+
+	// if chats exists update messages
+	setInterval(function(){
+		var msgBox = $(".msg-box").length;
+		var msgHead = $(".msg-box .msg-head");
+		var getChatUrl;
+		if(msgBox > 0){
+			$.each( msgHead, function( key, value ) {
+				var msgBody = $(this).next();
+				//console.log(msgBody);
+				var chatHeadName = $(this).text();
+				chatHeadName = chatHeadName.split("x");
+				chatHeadName = chatHeadName[0];
+				//console.log("chats updated");
+				var userName = localStorage.getItem("userName");
+				if(userName != "admin"){
+					getChatUrl = userName+".json";
+				} else{
+					getChatUrl = chatHeadName+".json";
+				}				
+				
+				$.ajax({
+				  	url: getChatUrl,
+				  	type: "GET",
+				  	cache: false
+				}).done(function(ajData) {
+					$(msgBody).empty();
+					userSenderName = ajData[0].name;
+					//console.log(userSenderName);
+					var userName = localStorage.getItem("userName");
+					for (var i = 0; i < ajData.length; i++) {
+						//console.log(ajData[i]);
+						var senderName = ajData[i].name;
+						var senderMessage = ajData[i].message;						
+						if ( (senderName == "admin") && (userName == "admin") ){
+							// besked: admin, login: admin
+							$(msgBody).append(
+								"<div class='msg-out'>"+senderMessage+"</div>"			
+							);
+						} else if( (senderName == "admin") && (userName != "admin") ){
+							// besked: admin, login: user
+							$(msgBody).append(
+								"<div class='msg-in'>"+senderMessage+"</div>"			
+							);
+						} else if( (senderName != "admin") && (userName == "admin") ){
+							// besked: user, login: admin
+							$(msgBody).append(
+								"<div class='msg-in'>"+senderMessage+"</div>"			
+							);
+						} else if( (senderName != "admin") && (userName != "admin") ){
+							// besked: user, login: user
+							$(msgBody).append(
+								"<div class='msg-out'>"+senderMessage+"</div>"			
+							);
+						}
+					}				
+				});
+
+			});
+		} else{
+			console.log("no chats");
+		}
+
+	}, 2000);
+
+	$(document).on("click", ".chat-head", function(){
+		$(".chat-body").toggle("fast");
+	});
+
+	$(document).on("click", ".msg-head", function(){
+		$(this).siblings(2).toggle("fast");
+	});
+
+	$(document).on("click", ".close", function(){
+		$(this).parents().eq(1).remove();
+	});
+
+	// click a user in the chat-list
+	$(document).on("click", ".user", function(){
+		var msgHead = $(".msg-box .msg-head");
+		var name = $(this).text();
+		var exists;
+		var newChat = $(
+			'<div class="msg-box">' +
+				'<div class="msg-head">'+ name +
+					'<div class="close">x</div>' +
+				'</div>' +
+				'<div class="msg-body">' +
+					// messages here
+				'</div>' +
+				'<div class="msg-footer">' +
+					'<textarea class="msg-input" rows="3" type="text" name="message" placeholder="Type message"></textarea>' +
+				'</div>' +
+			'</div>'
+		);		
+
+		var msgLength = $(".chat-inner-wrapper").children().length;
+
+		if(msgLength == 1){
+			// if no chats open append right away
+			console.log(true);
+			$(".chat-inner-wrapper").append(newChat);
+		} else{
+			//else check dom elements for duplicates before appending
+			$.each( msgHead, function( key, value ) {
+				var chatHeadName = $(this).text();
+				chatHeadName = chatHeadName.split("x");
+				chatHeadName = chatHeadName[0]
+			  	//console.log(chatHeadName);
+			  	if(name == chatHeadName){
+			  		exists = true;			
+			  	}
+			}); 
+			// append if no match is found
+			if(exists != true){
+			  	$(".chat-inner-wrapper").append(newChat);
+			} else{
+				//console.log("chat window already open");
+			}
+		}		
+	});
+
+	//GET USERS FOR THE ADMIN
+	setInterval(function(){
+		var getUserUrl = "service-get-users.php";
+		$.ajax({
+		  url  : getUserUrl,
+		  type : "GET",
+		  cache: false
+		}).done(function(jData) {
+			//console.log("ajax start");
+			var jUsers = JSON.parse(jData);
+			var chatBodyLength = $(".chat-body .user").length;
+			//console.log(chatBodyLength);
+			if(chatBodyLength == 0){ // if no chats exists in dom, append all from file
+				for (var i = 0; i < jUsers.length; i++) {		  	 		
+				  	$(".chat-body").append("<div class='user'>"+jUsers[i].userEmail+"</div>");
+				 } //end forloop
+			} else{
+				for (var i = 0; i < jUsers.length; i++) {
+					var test = jUsers[i].userEmail;
+					var exists = false;
+					$( ".user" ).each(function() {
+						var currentUser = $( this ).text();
+						if(test == currentUser){
+							exists = true;
+						}				 				
+			    	});	//foreach end
+			    	if(exists == false){
+						console.log("new user");
+						$(".chat-body").append("<div class='user'>"+jUsers[i].userEmail+"</div>");
+					} else{
+						//console.log("no changes");
+					}		  	 		
+				}  //end forloop
+			}	  
+		   
+		});
+
+	}, 1000);
+
+	// chat sending messages
+	$(document).on("click", ".msg-input", function(){
+		var currentChatBox = $(this);
+		var currentChatBoxName = currentChatBox.parents().siblings(":eq(0)").text();		
+		chatHeadName = currentChatBoxName.split("x");
+		chatHeadName = chatHeadName[0];
+		console.log(chatHeadName);
+		var sendMessageUrl;
+		// on keypress enter send message		
+		$(document).on("keypress", ".msg-input", function(e){
+			if(e.keyCode == 13){
+				var msg = $(this).val();
+				var userName = localStorage.getItem("userName");
+
+				if(userName != "admin"){
+					sendMessageUrl = "service-user-send-chat.php?username="+userName+"&message="+msg;
+				} else{
+					sendMessageUrl = "service-admin-send-chat.php?username="+chatHeadName+"&message="+msg;
+				}
+				//var sendMessageUrl = "service-admin-send-chat.php?username="+chatHeadName+"&message="+msg;		
+				$(this).val('');
+				if(msg != ''){
+					console.log(msg);
+					$.ajax({
+					  	url  : sendMessageUrl,
+					  	type : "GET",
+					  	cache: false
+					}).done(function() {
+						console.log("message sent");
+					});
+				}
+		        return false;
+			}
+		});
+	});
 
 </script>
 </html>

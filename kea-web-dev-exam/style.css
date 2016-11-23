@@ -407,3 +407,143 @@ input {
 .section-bg:nth-child(even).animate-section .img{
 	transform:translate3d(50px,50px,0);
 }
+
+/******************************			   *****************************
+******************************* chat start *****************************
+******************************			   *****************************/
+
+.chat-wrapper{
+	position:relative;
+	z-index:101;
+	display:none;
+	width: 100%;
+	position: fixed;
+	bottom: 0;
+}
+.chat-inner-wrapper{
+	display: flex;
+	align-items: flex-end;
+	justify-content:flex-end;
+}
+.chat-box, .msg-box{
+	display: flex;
+	flex-direction: column;
+	flex-basis: auto;
+	background-color: white;
+	width: 250px;
+	border-radius: 5px 5px 0 0;
+}
+.chat-box{
+	order: 1;
+	margin-right: 10px;
+}
+.chat-head, .msg-head{
+	display: flex;
+	cursor: pointer;
+	background-color: #3d414c;
+	color: white;
+	padding: 15px;
+	border-radius: 5px 5px 0 0;
+}
+
+.msg-head{
+	justify-content:space-between;
+}
+
+.chat-body{
+	height: 400px;
+	overflow-y: scroll;
+}
+
+.user{
+	cursor: pointer;
+	padding:20px 25px;
+	position: relative;
+}
+
+.user:hover{
+	background-color: #f8f8f8;
+}
+
+.user:before{
+	content:"";
+	position: absolute;
+	left:7px;
+	top: 27px;
+	width: 10px;
+	height: 10px;
+	border-radius: 50px;
+	background-color: green;
+}
+
+.msg-box{
+	background-color: white;
+	margin-right: 10px;
+	
+}
+
+.msg-body{
+	height: 250px;
+	font-size: 12px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.msg-input{
+	width: 100%;
+	padding: 5px;
+	font-family: "Open Sans", sans-serif;
+	font-size: 16px;
+	-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+    box-sizing: border-box;
+    border:none;
+    resize:none;
+    border-top: 1px solid #f8f8f8;
+}
+
+.msg-in{
+	margin-top: 10px;
+	margin-right:20px;
+	margin-left: 20px;
+	padding: 15px;
+	background-color: #bdc3c7;
+	position: relative;
+	border-radius: 2px 5px 5px 2px;
+}
+
+.msg-in:before{
+	position: absolute;
+	left:-30px;
+	top:9px;
+	content: "";
+	width: 0px;
+	height: 0px;
+	border: 15px solid;
+	border-color: transparent #bdc3c7 transparent transparent;
+}
+
+.msg-out{
+	margin-top: 10px;
+	margin-right:20px;
+	margin-left: 20px;
+	padding: 15px;
+	background-color: #29B6F6;
+	position: relative;
+	border-radius: 5px 2px 2px 5px;
+}
+
+.msg-out:before{
+	position: absolute;
+	right:-30px;
+	top:9px;
+	content: "";
+	width: 0px;
+	height: 0px;
+	border: 15px solid;
+	border-color: transparent transparent transparent #29B6F6;
+}
+
+.msg-input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+		font
+}

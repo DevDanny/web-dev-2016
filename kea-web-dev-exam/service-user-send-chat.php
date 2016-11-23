@@ -14,7 +14,7 @@
 
 		// create a new object and save it in variable, and assign values to the keys
 		$jChat = json_decode('{}');
-		$jChat->name = 'admin';
+		$jChat->name = $user;
 		$jChat->message = $message;
 
 		//push the object to array
@@ -30,7 +30,7 @@
 		echo "message sent";
 	} else{
 		echo "file created";
-		$sMessage = '[{"name":admin","message":"'.$message.'"}]';
+		$sMessage = '[{"name":"'.$user.'","message":"'.$message.'"}]';
 		file_put_contents("$user.json", $sMessage);
 	}
 ?>
